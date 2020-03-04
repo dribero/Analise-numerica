@@ -1,4 +1,4 @@
 program HelloWorld
     implicit none
-    print*,"Olá Mundo"
+    print*,"Olá Mundo!"
 end program
