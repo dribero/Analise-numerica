@@ -17,6 +17,7 @@ program metod
 
         i = i + 1
         P0 = pn
+
     end do
 
     print*, pn, f(pn)
