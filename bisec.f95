@@ -21,7 +21,7 @@ program bisec
         xnew = p
 
     enddo
-print*, i, p, o(xold,xnew)
+print*, i,p, o(xold,xnew)
 
 contains
 
@@ -37,5 +37,4 @@ function o(xold,xnew)
     num = abs(xnew - exata); den = abs(xold - exata)
     o = num / den
 end function
-
 end program
