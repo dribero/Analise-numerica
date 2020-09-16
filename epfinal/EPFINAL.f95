@@ -629,9 +629,7 @@ subroutine Gauss(Maatrix,s,x,Dimen,nDiag)
 end subroutine
 
 subroutine OUTPUTS(x,y,n,Name)
-    !===================================================
-    !subrutine para salvar os datos em um arquivo .dat
-    !===================================================
+
     implicit none
     integer, parameter :: single = selected_real_kind(p=4)
     integer, parameter :: double = selected_real_kind(p=8)
