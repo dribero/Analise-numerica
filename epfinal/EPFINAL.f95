@@ -5,11 +5,11 @@ program ProjetoFinal
     !N° USP 11549649
     !EP FINAL
 !==================================================================
-!NP é o número de pontos da malha para fazer o gráfico da função resultante, bem como o cálculo da norma
-!Inf é a condição de contorno para x = 0
-!Sup é a condição de contorno para x = 1
-!no caso de colocar uma condicao diferente de contorno nao homogeneo,
-!você deve definir a derivada da função k(x) na função "Dk" definida neste código
+!NP numero de pontos para o grafico
+!Inf é a condicao de fronteira para x = 0
+!Sup é a condicao de fronteira para x = 1
+!Se deseja trocar de teste so deve descomentar as funcoes k,q,f,u
+!do respectivo teste
     implicit none
     integer, parameter :: single = selected_real_kind(p=4)
     integer, parameter :: double = selected_real_kind(p=8)
@@ -177,12 +177,11 @@ program ProjetoFinal
         if ((Inf.EQ.0._double).AND.(Sup.EQ.1._double)) then
           !f = 12._double*x*(1._double-x)-2!Test1
          f = x + (2._double - x)*exp(x) !Test2
-         !f = (2.d0-(x+1.d0)*(x+1.d0))*exp(1.d0)*log(2.d0)-2.d0*exp(x) !Test3
 
         else
          !f = -12._double*x**2 + 12._double*x - 2 !Test1
          f = exp(x)+1._double+exp(x)*((x-1._double)*(exp(-x)-1._double) + Inf + (Sup - Inf)*x)!Test2
-         !f = (2._double-(x+1._double)*(x+1._double))*exp(1._double)*log(2._double)-2._double*exp(x) !Test3
+
 
         end if
 
@@ -193,7 +192,7 @@ program ProjetoFinal
         real(kind=double) :: q, x
         !q = 0._double !Test1
         q = exp(x) !Test2
-        !q = x+2.d0 !Test3
+
         return
     end function
 
@@ -201,7 +200,7 @@ program ProjetoFinal
         real(kind=double) :: k, x
         !k = 1._double !Test1
         k = exp(x) !Test2
-        !k = x+1.d0 !Test3
+
         return
     end function k
 
@@ -209,7 +208,7 @@ program ProjetoFinal
         real(kind=double) :: Dk, x
         !Dk = 0._double !Test1
         Dk = exp(x) !Test2
-        !Dk = 1.d0 !Test3
+
         return
     end function Dk
 
@@ -219,12 +218,12 @@ program ProjetoFinal
         if ((Inf.EQ.0._double).AND.(Sup.EQ.1._double)) then
             !u = (x**2)*(x-1)**2 !Test1
             u = (x-1._double)*(exp(-x)-1._double) !Test2
-            !u = exp(x)*log(x+1.d0)-(exp(1.d0)*log(2.d0))*x !Test3
+
 
         else
             !u = (x**2)*(x-1)**2 + Inf + (Sup - Inf)*x !Test1
             u = (x-1._double)*(exp(-x)-1._double) + Inf + (Sup - Inf)*x !Test2
-            !u = exp(x)*log(x+1.d0)-(exp(1.d0)*log(2.d0))*x !Test3
+
         end if
 
     end function
